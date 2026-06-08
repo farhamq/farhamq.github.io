@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پورتفولیو گرافیک</title>
- 
+    <title>پورتفولیو گرافیک حاجی</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(25, 25, 30, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.15);
             --text-color: #ffffff;
+            --noise-pattern: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
         }
 
         * {
@@ -21,7 +21,7 @@
         }
 
         body {
-            background-color: #0f0f13;
+            background-color: #050505;
             color: var(--text-color);
             min-height: 100vh;
             overflow-x: hidden;
@@ -31,7 +31,6 @@
             position: relative;
         }
 
-
         .liquid-bg {
             position: fixed;
             top: 0;
@@ -40,13 +39,13 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: #0f0f13;
+            background: #050505;
         }
 
         .blob {
             position: absolute;
-            filter: blur(80px);
-            opacity: 0.7;
+            filter: blur(100px);
+            opacity: 0.8;
             animation: move 20s infinite alternate;
         }
 
@@ -88,12 +87,12 @@
             max-width: 1200px;
             margin: 40px auto;
             padding: 40px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background-image: var(--noise-pattern), linear-gradient(var(--glass-bg), var(--glass-bg));
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             border: 1px solid var(--glass-border);
             border-radius: 32px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
@@ -106,7 +105,7 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff, #a5a5a5);
+            background: linear-gradient(135deg, #ffffff, #888888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -118,6 +117,7 @@
             margin: 0 auto;
             line-height: 1.8;
         }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -125,25 +125,39 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
+            background-image: var(--noise-pattern), linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03));
+            padding: 40px 30px;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, background 0.3s ease;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
             cursor: pointer;
+            text-align: center;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        /* استایل آیکون‌های SVG */
+        .card-icon svg {
+            width: 56px;
+            height: 56px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.9;
         }
 
         .card h2 {
@@ -157,6 +171,7 @@
             opacity: 0.7;
             line-height: 1.6;
         }
+
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .container { padding: 20px; border-radius: 24px; }
@@ -164,6 +179,7 @@
     </style>
 </head>
 <body>
+
     <div class="liquid-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -178,21 +194,37 @@
 
         <div class="grid">
             <div class="card">
-                <div class="card-icon">🎨</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
                 <h2>طراحی هویت بصری</h2>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون.</p>
             </div>
             
             <div class="card">
-                <div class="card-icon">✨</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                </div>
                 <h2>یوآی و یوایکس (UI/UX)</h2>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون.</p>
             </div>
 
             <div class="card">
-                <div class="card-icon">📱</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        <circle cx="12" cy="12" r="10" stroke-dasharray="4 4"></circle>
+                    </svg>
+                </div>
                 <h2>موشن گرافیک</h2>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون.</p>
             </div>
         </div>
     </div>
